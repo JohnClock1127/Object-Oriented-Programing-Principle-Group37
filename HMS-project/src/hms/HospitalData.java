@@ -34,14 +34,14 @@ public class HospitalData {
     private void seedInitialData() {
         try {
             // --- Doctors (first entry = team member 1) ---
-            doctors.add(Doctor.newDoctor("D001", "Member1 (id 001)", "Cardiology", "9am-5pm", "MBBS", 101));
+            doctors.add(Doctor.newDoctor("D001", "Ooi Sim Joo (id 123)", "Cardiology", "9am-5pm", "MBBS", 101));
             doctors.add(Doctor.newDoctor("D002", "Dr. Sarah Lim", "Pediatrics", "8am-4pm", "MD", 102));
             doctors.add(Doctor.newDoctor("D003", "Dr. Ahmad Faiz", "Orthopedics", "10am-6pm", "MBBS, MS", 103));
             doctors.add(Doctor.newDoctor("D004", "Dr. Priya Raj", "Neurology", "9am-5pm", "MD, DM", 104));
             doctors.add(Doctor.newDoctor("D005", "Dr. Wei Ming", "General Surgery", "7am-3pm", "MBBS, MS", 105));
 
             // --- Patients (first entry = team member 1) ---
-            patients.add(Patient.newPatient("P001", "Member1 (id 001)", "Flu", "Male", "Outpatient", 22));
+            patients.add(Patient.newPatient("P001", "Ooi Sim Joo (id 123)", "Flu", "Female", "Outpatient", 22));
             patients.add(Patient.newPatient("P002", "Alice Tan", "Fracture", "Female", "Admitted", 34));
             patients.add(Patient.newPatient("P003", "Kumar Selvam", "Diabetes", "Male", "Outpatient", 55));
             patients.add(Patient.newPatient("P004", "Nur Aisyah", "Asthma", "Female", "Admitted", 19));

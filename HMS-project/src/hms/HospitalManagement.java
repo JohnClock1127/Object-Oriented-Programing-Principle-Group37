@@ -144,11 +144,15 @@ public class HospitalManagement {
             System.out.println("\n------------- DOCTOR MENU -------------");
             System.out.println("1. Add New Doctor");
             System.out.println("2. Display All Doctors");
+            System.out.println("3. Search Doctor by Specialist");
             System.out.println("0. Back to Main Menu");
-            int choice = readMenuChoice(0, 2);
+
+            int choice = readMenuChoice(0, 3);
+
             switch (choice) {
                 case 1 -> addDoctor();
                 case 2 -> displayDoctors();
+                case 3 -> searchDoctorBySpecialist();
                 case 0 -> back = true;
             }
         }
@@ -185,6 +189,47 @@ public class HospitalManagement {
             }
         }
     }
+    
+    private void searchDoctorBySpecialist() {
+        System.out.println("\n========== SEARCH DOCTOR BY SPECIALIST ==========");
+
+        if (doctors.isEmpty()) {
+            System.out.println("No doctors registered.");
+            return;
+        }
+
+        // Display available specialists
+        java.util.List<String> specialists = new java.util.ArrayList<>();
+
+        for (Doctor d : doctors) {
+            if (!specialists.contains(d.getSpecialist())) {
+                specialists.add(d.getSpecialist());
+            }
+        }
+
+        System.out.println("Available Specialists:");
+        for (int i = 0; i < specialists.size(); i++) {
+            System.out.println((i + 1) + ". " + specialists.get(i));
+        }
+
+        int choice = readMenuChoice(1, specialists.size());
+        String selectedSpecialist = specialists.get(choice - 1);
+
+        System.out.println("\nDoctors in " + selectedSpecialist + ":");
+
+        boolean found = false;
+
+        for (Doctor d : doctors) {
+            if (d.getSpecialist().equalsIgnoreCase(selectedSpecialist)) {
+                d.showDoctorInfo();
+                found = true;
+            }
+        }
+
+        if (!found) {
+            System.out.println("No doctor found.");
+        }
+    }
 
     // ================= PATIENT MENU =================
 
@@ -194,11 +239,15 @@ public class HospitalManagement {
             System.out.println("\n------------- PATIENT MENU -------------");
             System.out.println("1. Add New Patient");
             System.out.println("2. Display All Patients");
+            System.out.println("3. Search Patient by Disease");
             System.out.println("0. Back to Main Menu");
-            int choice = readMenuChoice(0, 2);
+
+            int choice = readMenuChoice(0, 3);
+
             switch (choice) {
                 case 1 -> addPatient();
                 case 2 -> displayPatients();
+                case 3 -> searchPatientByDisease();
                 case 0 -> back = true;
             }
         }
@@ -233,6 +282,47 @@ public class HospitalManagement {
             for (Patient p : patients) {
                 p.showPatientInfo();
             }
+        }
+    }
+    
+    private void searchPatientByDisease() {
+        System.out.println("\n========== SEARCH PATIENT BY DISEASE ==========");
+
+        if (patients.isEmpty()) {
+            System.out.println("No patients registered.");
+            return;
+        }
+
+        // Display available diseases
+        java.util.List<String> diseases = new java.util.ArrayList<>();
+
+        for (Patient p : patients) {
+            if (!diseases.contains(p.getDisease())) {
+                diseases.add(p.getDisease());
+            }
+        }
+
+        System.out.println("Available Diseases:");
+        for (int i = 0; i < diseases.size(); i++) {
+            System.out.println((i + 1) + ". " + diseases.get(i));
+        }
+
+        int choice = readMenuChoice(1, diseases.size());
+        String selectedDisease = diseases.get(choice - 1);
+
+        System.out.println("\nPatients with " + selectedDisease + ":");
+
+        boolean found = false;
+
+        for (Patient p : patients) {
+            if (p.getDisease().equalsIgnoreCase(selectedDisease)) {
+                p.showPatientInfo();
+                found = true;
+            }
+        }
+
+        if (!found) {
+            System.out.println("No patient found.");
         }
     }
 
